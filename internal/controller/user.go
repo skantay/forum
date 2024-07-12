@@ -10,10 +10,10 @@ type userService interface {
 	Register(registration models.UserRegistration) error
 }
 
-type User struct {
+type user struct {
 	r render.Render
 	u userService
 }
 
-func (u *User) Register(w http.ResponseWriter, r *http.Request) {
+func (u *user) register(w http.ResponseWriter, r *http.Request) {
 }
