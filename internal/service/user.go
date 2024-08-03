@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"fmt"
+
 	"forum/internal/models"
 	"forum/pkg/logger"
 
@@ -10,7 +11,7 @@ import (
 )
 
 type UserRepository interface {
-	Register(ctx context.Context, email string, password []byte) error
+	Register(ctx context.Context, email string, username string, password []byte) error
 }
 
 type userService struct {
@@ -32,7 +33,7 @@ func (s *userService) Register(ctx context.Context, user models.User) error {
 		return fmt.Errorf("failed to generate hash from password: %w", err)
 	}
 
-	if err := s.repo.Register(ctx, user.Email, hashed); err != nil {
+	if err := s.repo.Register(ctx, user.Email, user.Username, hashed); err != nil {
 		return fmt.Errorf("failed to register user: %w", err)
 	}
 

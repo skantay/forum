@@ -5,7 +5,7 @@
         <a href="/about">About</a>
 
         {{if .IsAuthenticated}}
-        <a href='/snippet/create'>Create snippet</a>
+        <a href='/post/create'>Create post</a>
         {{end}}
     </div>
 
@@ -14,15 +14,15 @@
     <div>
         <a href="/account/view">Account</a>
 
-        <form action="/user/logout" method="POST">
+        <form action="/logout" method="POST">
             <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
             <button>Logout</button>
         </form>
     </div>
     {{else}}
     <div>
-        <a href="/user/signup">Sign Up</a>
-        <a href="/user/login">Login</a>
+        <a href="/register">Register</a>
+        <a href="/login">Login</a>
     </div>
     {{end}}
 </nav>

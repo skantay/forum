@@ -1,4 +1,8 @@
 CREATE TABLE IF NOT EXISTS users (
-    email TEXT NOT NULL PRIMARY KEY,
+    id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    email TEXT NOT NULL,
+    username TEXT NOT NULL,
     password TEXT NOT NULL
 );
+
+CREATE UNIQUE INDEX IF NOT EXISTS users_uc_email ON users(email);

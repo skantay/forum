@@ -4,13 +4,14 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	"net/http"
+	"os"
+	"time"
+
 	"forum/internal/controller"
 	"forum/internal/repository"
 	"forum/internal/service"
 	"forum/pkg/logger"
-	"net/http"
-	"os"
-	"time"
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -33,12 +34,14 @@ func main() {
 
 	// TODO: configure server
 	server := http.Server{
-		//TODO: take config envs from .env
+		// TODO: take config envs from .env
 		Addr:    ":8080",
 		Handler: mux,
 	}
 
 	// TODO: implement all layers
+
+	fmt.Printf("Starting server on %s\n", server.Addr)
 
 	// TODO: implement gracefull shutdown
 	server.ListenAndServe()
